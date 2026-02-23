@@ -1,0 +1,44 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[fa-IR]{polyglossia}
+\setmainlanguage{persian}
+\setotherlanguage{english}
+\newfontfamily\persianfont[Script=Arabic]{Arial}
+
+\title{آموزش و مستندات پروژه WarIran (مخصوص مبتدیان)}
+\author{Antigravity AI Assistant}
+\date{}
+
+\begin{document}
+\maketitle
+
+\tableofcontents
+\newpage
+
+\section{معرفی پروژه}
+این پروژه یک سیستم "ناظر" است. تصور کنید چشمی در فضا دارید که مدام زمین را نگاه می‌کند. ما در این پروژه با استفاده از کدنویسی، این چشم را طوری تنظیم می‌کنیم که اگر در منطقه خاصی (مثلاً نزدیکی منزل خانواده) اتفاق غیرعادی مثل انفجار یا آتش‌سوزی رخ داد، سریعاً خبر دهد.
+
+\section{چرا از داکر (Docker) استفاده می‌کنیم؟}
+برای یک مبتدی، داکر مثل یک "جعبه جادویی" است. 
+\begin{itemize}
+    \item \textbf{بدون دردسر نصب:} نصب کتابخانه‌های تخصصی نقشه در ویندوز بسیار سخت است. داکر تمام این‌ها را داخل خودش دارد.
+    \item \textbf{اجرای یکسان:} اگر برنامه روی کامپیوتر من کار کند، با داکر حتماً روی کامپیوتر شما و روی سرور هم دقیقاً به همان شکل کار خواهد کرد.
+    \item \textbf{ایزوله‌سازی:} برنامه ما تداخلی با بقیه برنامه‌های کامپیوتر شما نخواهد داشت.
+\end{itemize}
+
+\section{مراحل انجام شده و علت آن‌ها}
+\begin{enumerate}
+    \item \textbf{ایجاد گیت‌ایگنور (.gitignore):} برای اینکه فایل‌های شخصی و سنگین به اشتباه در اینترنت (گیت‌هاب) پخش نشوند.
+    \item \textbf{پیکربندی محیط (.env):} تمام کلیدهای سری (مثل کلید ناسا) در یک فایل جداگانه می‌مانند تا امنیت پروژه حفظ شود.
+    \item \textbf{موتور حرارتی (Thermal Handler):} چون داده‌های حرارتی ناسا سریع‌ترین راه برای فهمیدن وقوع یک حادثه هستند (تاخیر کمتر از ۳ ساعت).
+\end{enumerate}
+
+\section{نحوه استفاده}
+\begin{itemize}
+    \item کلید API ناسا را در فایل \texttt{.env} قرار دهید.
+    \item برنامه \text{Docker Desktop} را باز کنید.
+    \item دستور \texttt{docker-compose up} را اجرا کنید.
+    \item سیستم شروع به پایش کرده و در صورت مشاهده مورد مشکوک، در کنسول چاپ می‌کند.
+\end{itemize}
+
+\end{document}
