@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  backend:
+    build: .
+    volumes:
+      - .:/app
+      - ./logs:/app/logs
+      - ./outputs:/app/outputs
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    restart: always
+  # Future: Add Database and Frontend services here
+  # db:
+  #   image: postgres:15
+  #   ...

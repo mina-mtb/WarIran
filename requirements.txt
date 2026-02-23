@@ -1,0 +1,10 @@
+earthengine-api
+pandas
+geopandas
+rasterio
+python-dotenv
+requests
+fastapi
+uvicorn
+python-telegram-bot
+pytest
