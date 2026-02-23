@@ -3,6 +3,7 @@ import os
 from dotenv import load_dotenv
 from engine.thermal_handler import ThermalHandler
 from engine.gee_handler import GEEHandler
+from utils.notifier import Notifier
 
 def main():
     load_dotenv()
@@ -11,6 +12,10 @@ def main():
     
     thermal_engine = ThermalHandler()
     gee_engine = GEEHandler()
+    notifier = Notifier()
+    
+    # 1. Start-up Notification
+    notifier.send_message("🚀 *WarIran Monitoring Engine started.* System is active.")
     
     if not gee_engine.authenticate():
         print("Warning: GEE authentication failed. Satellite verification will be disabled.")
@@ -45,10 +50,12 @@ def main():
                     pre, post = gee_engine.get_latest_sar_pair(e_lon, e_lat)
                     if pre and post:
                         change_stats = gee_engine.detect_structural_change(pre, post, e_lon, e_lat)
-                        print(f"Structural Change Stats: {change_stats}")
                         
-                        # TODO: Calculate probability of damage based on backscatter drop
-                        # TODO: Trigger Telegram Notification with combined data
+                        # Format alert for Telegram
+                        alert_details = f"NASA FIRMS confidence: {event.get('confidence', 'N/A')}\n"
+                        alert_details += f"SAR Change StdDev: {change_stats.get('VV_stdDev', 0):.4f}"
+                        
+                        notifier.send_alert("Thermal Anomaly + Structural Change Detected", e_lat, e_lon, details=alert_details)
             else:
                 print("Status: No thermal anomalies detected.")
         

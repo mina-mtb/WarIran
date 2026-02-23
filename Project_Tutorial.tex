@@ -49,11 +49,17 @@
     \item دستور \texttt{earthengine authenticate} را در ترمینال بزنید تا کدهای پایتون اجازه ورود به ابرهای گوگل را داشته باشند.
 \end{enumerate}
 
+\section{نحوه راه‌اندازی بخش اعلان (تلگرام)}
+۱. در تلگرام به \texttt{@BotFather} پیام داده و ربات خود را بسازید.
+۲. توکن دریافت شده را در فایل \texttt{.env} جلوی \texttt{TELEGRAM_BOT_TOKEN} قرار دهید.
+۳. در ربات \texttt{@userinfobot} آی‌دی عددی خود را پیدا کرده و در \texttt{TELEGRAM_CHAT_ID} قرار دهید.
+
 \section{نحوه استفاده نهایی}
 \begin{itemize}
-    \item کلید API ناسا را در فایل \texttt{.env} قرار دهید.
+    \item کلیدهای API ناسا، گوگل و تلگرام را در فایل \texttt{.env} قرار دهید.
+    \item مطمئن شوید ابزار تغییر آی‌پی (VPN/Proxy) فعال است تا ربات بتواند پیام بفرستد.
     \item برنامه \text{Docker Desktop} را باز کنید.
-    \item دستور \texttt{docker-compose up} را اجرا کنید.
+    \item دستور \texttt{docker-compose up --build} را در ترمینال بزنید.
     \item سیستم شروع به پایش کرده و در صورت مشاهده مورد مشکوک، در کنسول چاپ می‌کند.
 \end{itemize}
 
