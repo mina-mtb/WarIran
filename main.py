@@ -20,12 +20,12 @@ def main():
     if not gee_engine.authenticate():
         print("Warning: GEE authentication failed. Satellite verification will be disabled.")
     
-    # Placeholder for a user's target area (e.g., Tehran center)
-    TARGET_LAT = 35.6892
-    TARGET_LON = 51.3890
-    RADIUS = 0.5 # approx 50km box for testing
+    # 2. Get Monitoring Target from .env (Default: Isfahan)
+    TARGET_LAT = float(os.getenv("MONITOR_LAT", 32.6546))
+    TARGET_LON = float(os.getenv("MONITOR_LON", 51.6680))
+    RADIUS = float(os.getenv("RADIUS_DEG", 0.5)) 
     
-    print(f"Status: Monitoring started for Coordinates ({TARGET_LAT}, {TARGET_LON})")
+    print(f"Status: Monitoring started for Isfahan Region ({TARGET_LAT}, {TARGET_LON})")
     
     while True:
         print(f"\n[{time.strftime('%Y-%m-%d %H:%M:%S')}] Running periodic check...")
