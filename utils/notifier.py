@@ -30,6 +30,8 @@ class Notifier:
 
         try:
             response = requests.post(url, json=payload, proxies=self.proxies, timeout=10)
+            if response.status_code != 200:
+                print(f"Telegram Error Response: {response.text}")
             response.raise_for_status()
             return True
         except Exception as e:
